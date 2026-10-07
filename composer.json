@@ -1,0 +1,44 @@
+{
+    "name": "omniguard/akismet",
+    "type": "library",
+    "description": "Omniguard Akismet: is this content spam - comment-check (ham, spam, or flagrant spam to discard), submit-spam and submit-ham to teach it, verify-key; a key or transport error raised, never taken for ham.",
+    "keywords": [
+        "spam",
+        "antispam",
+        "akismet",
+        "comments",
+        "omniguard"
+    ],
+    "homepage": "https://github.com/glitchr-studio/omniguard-akismet",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Marco Meyer",
+            "email": "marco.meyer@glitchr.io"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "glitchr/omniguard": "^1.0@dev",
+        "symfony/http-client": "^6.4|^7.0|^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Omniguard\\Akismet\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Omniguard\\Akismet\\Tests\\": "Tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
