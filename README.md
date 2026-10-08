@@ -36,4 +36,4 @@ address of the visitor go to Akismet (Automattic): say so in the privacy policy.
 [Documentation](docs/index.md): the fields sent, the answers, the options, what was verified -
 nothing against Akismet itself: no key.
 
-License: LGPL-3.0-or-later.
+License: MIT since 2026-10-09; earlier versions remain published under LGPL-3.0-or-later.
