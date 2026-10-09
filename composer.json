@@ -1,15 +1,15 @@
 {
-    "name": "omniguard/akismet",
+    "name": "omnishield/akismet",
     "type": "library",
-    "description": "Omniguard Akismet: is this content spam - comment-check (ham, spam, or flagrant spam to discard), submit-spam and submit-ham to teach it, verify-key; a key or transport error raised, never taken for ham.",
+    "description": "Omnishield Akismet: is this content spam - comment-check (ham, spam, or flagrant spam to discard), submit-spam and submit-ham to teach it, verify-key; a key or transport error raised, never taken for ham.",
     "keywords": [
         "spam",
         "antispam",
         "akismet",
         "comments",
-        "omniguard"
+        "omnishield"
     ],
-    "homepage": "https://github.com/glitchr-studio/omniguard-akismet",
+    "homepage": "https://github.com/glitchr-studio/omnishield-akismet",
     "license": "MIT",
     "authors": [
         {
@@ -19,7 +19,7 @@
     ],
     "require": {
         "php": ">=8.2",
-        "glitchr/omniguard": "^1.0@dev",
+        "glitchr/omnishield": "^1.0@dev",
         "symfony/http-client": "^6.4|^7.0|^8.0"
     },
     "require-dev": {
@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Omniguard\\Akismet\\": ""
+            "Omnishield\\Akismet\\": ""
         },
         "exclude-from-classmap": [
             "/Tests/"
@@ -35,7 +35,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Omniguard\\Akismet\\Tests\\": "Tests/"
+            "Omnishield\\Akismet\\Tests\\": "Tests/"
         }
     },
     "config": {

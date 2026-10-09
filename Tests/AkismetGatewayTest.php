@@ -1,15 +1,15 @@
 <?php
 
-namespace Omniguard\Akismet\Tests;
+namespace Omnishield\Akismet\Tests;
 
-use Omniguard\Akismet\AkismetGateway;
-use Omniguard\Akismet\AkismetGatewayFactory;
-use Omniguard\Exception\InvalidConfigException;
-use Omniguard\Exception\InvalidKeyException;
-use Omniguard\Exception\ProviderException;
-use Omniguard\Exception\UnreachableException;
-use Omniguard\Model\Label;
-use Omniguard\Model\Submission;
+use Omnishield\Akismet\AkismetGateway;
+use Omnishield\Akismet\AkismetGatewayFactory;
+use Omnishield\Exception\InvalidConfigException;
+use Omnishield\Exception\InvalidKeyException;
+use Omnishield\Exception\ProviderException;
+use Omnishield\Exception\UnreachableException;
+use Omnishield\Model\Label;
+use Omnishield\Model\Submission;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;

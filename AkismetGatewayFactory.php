@@ -1,10 +1,10 @@
 <?php
 
-namespace Omniguard\Akismet;
+namespace Omnishield\Akismet;
 
-use Omniguard\Config;
-use Omniguard\GatewayFactory;
-use Omniguard\GatewayInterface;
+use Omnishield\Config;
+use Omnishield\GatewayFactory;
+use Omnishield\GatewayInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -27,9 +27,9 @@ final class AkismetGatewayFactory extends GatewayFactory
     protected function populate(Config $c): void
     {
         $c->defaults([
-            'omniguard.factory_name' => 'akismet',
-            'omniguard.factory_title' => 'Akismet',
-            'omniguard.required_options' => ['api_key'],
+            'omnishield.factory_name' => 'akismet',
+            'omnishield.factory_title' => 'Akismet',
+            'omnishield.required_options' => ['api_key'],
             'site' => null,
             'language' => null,
             'test' => false,

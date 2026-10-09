@@ -1,12 +1,12 @@
-# omniguard/akismet
+# omnishield/akismet
 
-**Akismet** for [glitchr/omniguard](https://github.com/glitchr-studio/omniguard): is this content
+**Akismet** for [glitchr/omnishield](https://github.com/glitchr-studio/omnishield): is this content
 spam. `comment-check` answers ham, spam, or spam flagrant enough to discard; `submit-spam` and
 `submit-ham` teach it; `verify-key` checks a key once, when it is typed in.
 
 ```php
-use Omniguard\Akismet\AkismetGatewayFactory;
-use Omniguard\Model\Submission;
+use Omnishield\Akismet\AkismetGatewayFactory;
+use Omnishield\Model\Submission;
 
 $akismet = (new AkismetGatewayFactory($httpClient))->create(['api_key' => getenv('AKISMET_API_KEY'), 'site' => 'https://example.org']);
 
@@ -21,7 +21,7 @@ $akismet->report($submission, spam: true);   // a spam it let through
 ```
 
 ```yaml
-omniguard:
+omnishield:
     gateways:
         comments:
             factory: akismet
@@ -37,3 +37,5 @@ address of the visitor go to Akismet (Automattic): say so in the privacy policy.
 nothing against Akismet itself: no key.
 
 License: MIT since 2026-10-09; earlier versions remain published under LGPL-3.0-or-later.
+
+Formerly `omniguard/akismet`, renamed on 2026-10-10 with its family (`glitchr/omnishield`).

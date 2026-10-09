@@ -1,17 +1,17 @@
 ---
-title: omniguard/akismet
+title: omnishield/akismet
 order: 1
 ---
 
-# omniguard/akismet
+# omnishield/akismet
 
 ## Installation
 
 ```sh
-composer require omniguard/akismet
+composer require omnishield/akismet
 ```
 
-PHP 8.2 or later, `glitchr/omniguard` and `symfony/http-client` (give the factory your
+PHP 8.2 or later, `glitchr/omnishield` and `symfony/http-client` (give the factory your
 application's client, a `MockHttpClient` in a test). An API key from akismet.com.
 
 ## The sources

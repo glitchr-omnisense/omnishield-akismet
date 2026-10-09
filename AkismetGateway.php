@@ -1,16 +1,16 @@
 <?php
 
-namespace Omniguard\Akismet;
+namespace Omnishield\Akismet;
 
-use Omniguard\ClassifierInterface;
-use Omniguard\Exception\InvalidConfigException;
-use Omniguard\Exception\InvalidKeyException;
-use Omniguard\Exception\ProviderException;
-use Omniguard\Http\Answer;
-use Omniguard\Model\Capabilities;
-use Omniguard\Model\Classification;
-use Omniguard\Model\Label;
-use Omniguard\Model\Submission;
+use Omnishield\ClassifierInterface;
+use Omnishield\Exception\InvalidConfigException;
+use Omnishield\Exception\InvalidKeyException;
+use Omnishield\Exception\ProviderException;
+use Omnishield\Http\Answer;
+use Omnishield\Model\Capabilities;
+use Omnishield\Model\Classification;
+use Omnishield\Model\Label;
+use Omnishield\Model\Submission;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
