@@ -86,6 +86,7 @@ host in the other); an error is thrown instead of being taken for "not spam"; th
 
 | | |
 |---|---|
+| The family's conformance suite (`Omnishield\Testing\GatewayContractTests`) | **green on 2026-10-25**, offline: `Tests/AkismetContractTest.php` on the documented answers; HTTP 401/403 now an `InvalidKeyException` |
 | Against Akismet itself | **not verified in real: no key.** The answers (`Tests/Fixtures/*.json`: a body and its headers) are written from the documentation |
 | The fields sent | by the tests, against the documentation's list |
 | `verify-key` | by the tests only |

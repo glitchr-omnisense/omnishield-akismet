@@ -130,7 +130,12 @@ final class AkismetGateway implements ClassifierInterface
     /** @param array<string, string> $fields */
     private function call(string $call, array $fields): Answer
     {
-        return Answer::send($this->http, 'akismet', 'POST', rtrim($this->baseUri, '/').'/'.$call, ['body' => $fields]);
+        $answer = Answer::send($this->http, 'akismet', 'POST', rtrim($this->baseUri, '/').'/'.$call, ['body' => $fields]);
+        if (\in_array($answer->status, [401, 403], true)) {
+            throw new InvalidKeyException('akismet', \sprintf('%s: HTTP %d, the key was refused.', $call, $answer->status), (string) $answer->status);
+        }
+
+        return $answer;
     }
 
     private function error(string $call, Answer $answer): ProviderException
