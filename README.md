@@ -33,7 +33,7 @@ it could not read a `ProviderException`, no answer an `UnreachableException` - w
 content goes through then is the application's call. The text, the name, the e-mail and the
 address of the visitor go to Akismet (Automattic): say so in the privacy policy.
 
-[Documentation](docs/index.md): the fields sent, the answers, the options, what was verified -
+[Documentation](docs/index.md): what it calls, the credentials, the capabilities, an example run offline, the errors, the fields sent, the answers, the options, what was verified -
 nothing against Akismet itself: no key.
 
 ## Responsibility
