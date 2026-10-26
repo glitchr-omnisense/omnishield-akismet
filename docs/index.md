@@ -13,7 +13,7 @@ calls Akismet's REST API 1.1 on `https://rest.akismet.com/1.1/`: `comment-check`
 composer require omnishield/akismet
 ```
 
-PHP 8.2 or later, `omniscient/omnishield` and `symfony/http-client` (give the factory your
+PHP 8.2 or later, `omnisense/omnishield` and `symfony/http-client` (give the factory your
 application's client, a `MockHttpClient` in a test). An API key from akismet.com.
 
 ## Credentials

@@ -1,6 +1,6 @@
 # omnishield/akismet
 
-**Akismet** for [omniscient/omnishield](https://github.com/glitchr-studio/omnishield): is this content
+**Akismet** for [omnisense/omnishield](https://github.com/glitchr-omnisense/omnishield): is this content
 spam. `comment-check` answers ham, spam, or spam flagrant enough to discard; `submit-spam` and
 `submit-ham` teach it; `verify-key` checks a key once, when it is typed in.
 
