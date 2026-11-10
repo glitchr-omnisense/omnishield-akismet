@@ -46,6 +46,7 @@ final class AkismetGatewayFactory extends GatewayFactory
             $c->string('language'),
             $c->bool('test'),
             $c->string('base_uri') ?? AkismetGateway::BASE_URI,
+            $c->backoff(),
         );
     }
 }

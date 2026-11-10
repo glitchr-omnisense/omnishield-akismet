@@ -2,6 +2,9 @@
 
 namespace Omnishield\Akismet;
 
+use Omnisense\Contracts\Policy\Backoff;
+use Omnisense\Contracts\Policy\DeclaresUsagePolicyInterface;
+use Omnisense\Contracts\Policy\UsagePolicy;
 use Omnishield\ClassifierInterface;
 use Omnishield\Exception\InvalidConfigException;
 use Omnishield\Exception\InvalidKeyException;
@@ -28,8 +31,13 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  * UnreachableException. Whether to let the content through then is the
  * application's call.
  */
-final class AkismetGateway implements ClassifierInterface
+final class AkismetGateway implements ClassifierInterface, DeclaresUsagePolicyInterface
 {
+    /** The usage policy its package declares (omnisense/contracts' schema). */
+    public const POLICY = __DIR__.'/policy.json';
+
+    private static ?UsagePolicy $policy = null;
+
     public const BASE_URI = 'https://rest.akismet.com/1.1/';
     private const THANKS = 'Thanks for making the web a better place.';
 
@@ -40,6 +48,7 @@ final class AkismetGateway implements ClassifierInterface
         private readonly ?string $language = null,
         private readonly bool $test = false,
         private readonly string $baseUri = self::BASE_URI,
+        private readonly ?Backoff $backoff = null,
     ) {
     }
 
@@ -55,7 +64,13 @@ final class AkismetGateway implements ClassifierInterface
 
     public function capabilities(): Capabilities
     {
-        return new Capabilities(classifier: true, thirdParty: true, cookies: false, reports: true);
+        return new Capabilities(classifier: true, thirdParty: true, cookies: false, reports: true, policy: $this->usagePolicy());
+    }
+
+    /** Its usage policy, as its package declares it: policy.json beside this class. */
+    public function usagePolicy(): UsagePolicy
+    {
+        return self::$policy ??= UsagePolicy::fromFile(self::POLICY);
     }
 
     public function classify(Submission $submission): Classification
@@ -130,7 +145,7 @@ final class AkismetGateway implements ClassifierInterface
     /** @param array<string, string> $fields */
     private function call(string $call, array $fields): Answer
     {
-        $answer = Answer::send($this->http, 'akismet', 'POST', rtrim($this->baseUri, '/').'/'.$call, ['body' => $fields]);
+        $answer = Answer::send($this->http, 'akismet', 'POST', rtrim($this->baseUri, '/').'/'.$call, ['body' => $fields], $this->backoff);
         if (\in_array($answer->status, [401, 403], true)) {
             throw new InvalidKeyException('akismet', \sprintf('%s: HTTP %d, the key was refused.', $call, $answer->status), (string) $answer->status);
         }
