@@ -38,6 +38,9 @@ final class AkismetContractTest extends TestCase
     private static function recorded(string $name): MockResponse
     {
         $fixture = json_decode((string) file_get_contents(__DIR__.'/Fixtures/'.$name.'.json'), true);
+        self::assertIsArray($fixture);
+        self::assertIsString($fixture['body']);
+        self::assertIsArray($fixture['headers']);
 
         return new MockResponse($fixture['body'], ['response_headers' => ['content-type' => 'text/plain; charset=utf-8'] + $fixture['headers']]);
     }

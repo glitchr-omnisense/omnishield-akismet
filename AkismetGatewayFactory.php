@@ -41,12 +41,18 @@ final class AkismetGatewayFactory extends GatewayFactory
     {
         return new AkismetGateway(
             $this->http ?? HttpClient::create(),
-            (string) $c['api_key'],
+            self::text($c['api_key']),
             $c->string('site'),
             $c->string('language'),
             $c->bool('test'),
             $c->string('base_uri') ?? AkismetGateway::BASE_URI,
             $c->backoff(),
         );
+    }
+
+    /** An option as the (string) cast read it: a scalar as text, anything else empty. */
+    private static function text(mixed $value): string
+    {
+        return \is_scalar($value) || $value instanceof \Stringable ? (string) $value : '';
     }
 }

@@ -21,14 +21,18 @@ use Symfony\Component\HttpClient\Response\MockResponse;
  */
 final class AkismetGatewayTest extends TestCase
 {
-    /** @var list<array{string, string, array<string, string>}> */
+    /** @var list<array{string, string, array<int|string, array<mixed>|string>}> */
     private array $calls = [];
 
-    /** @param list<string|MockResponse> $answers fixtures' names: a body and its headers each */
+    /**
+     * @param list<string|MockResponse> $answers fixtures' names: a body and its headers each
+     * @param array<string, mixed>      $options
+     */
     private function gateway(array $answers, array $options = []): AkismetGateway
     {
         $http = new MockHttpClient(function (string $method, string $url, array $options) use (&$answers): MockResponse {
-            parse_str((string) $options['body'], $body);
+            self::assertIsString($options['body']);
+            parse_str($options['body'], $body);
             $this->calls[] = [$method, $url, $body];
             $answer = array_shift($answers) ?? throw new \LogicException('No answer left.');
 
@@ -36,6 +40,9 @@ final class AkismetGatewayTest extends TestCase
                 return $answer;
             }
             $fixture = json_decode((string) file_get_contents(__DIR__.'/Fixtures/'.$answer.'.json'), true);
+            self::assertIsArray($fixture);
+            self::assertIsString($fixture['body']);
+            self::assertIsArray($fixture['headers']);
 
             return new MockResponse($fixture['body'], ['response_headers' => ['content-type' => 'text/plain; charset=utf-8'] + $fixture['headers']]);
         });
