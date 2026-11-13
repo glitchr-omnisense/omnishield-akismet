@@ -36,6 +36,14 @@ address of the visitor go to Akismet (Automattic): say so in the privacy policy.
 [Documentation](docs/index.md): what it calls, the credentials, the capabilities, an example run offline, the errors, the fields sent, the answers, the options, what was verified -
 nothing against Akismet itself: no key.
 
+## Install
+
+```sh
+composer require omnishield/akismet
+```
+
+It brings the family's core, `omnisense/omnishield`, and `omnisense/contracts` with it. **An Akismet API key is needed** (an account at akismet.com: free for a personal site, a paid plan for a commercial one). Without one, [docs/](docs/index.md) runs an example offline, on recorded answers.
+
 ## Usage policy
 
 [`policy.json`](policy.json) (omnisense/contracts' schema, read at the provider's terms on 2026-11-10; its `provenance.notes` says what was read where): Commercial sites need a paid plan (`commercial: contract`: say `usage: {commercial: true, contract: true}` once you have one); the free key is for personal sites. The limits depend on the plan and are declared unknown: give your plan's as a tightening. A 429 and its `Retry-After` hold the next calls (`UnreachableException::retryAfter()`). See the core's [usage policies](https://github.com/glitchr-omnisense/omnishield/blob/1.x/docs/policies.md).
